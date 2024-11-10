@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"os/exec"
 	. "os/exec"
 
 	"golang.org/x/crypto/ssh"
@@ -363,7 +362,7 @@ type TimeResult struct {
 // RunTime parses the output of `time` command to return structured timings.
 func RunTime(ctx context.Context, command string, args ...string) (*TimeResult, error) {
 	// Run `time` with the command
-	cmd := exec.CommandContext(ctx, "time", command)
+	cmd := CommandContext(ctx, "time", command)
 	cmd.Args = append(cmd.Args, args...)
 
 	// Capture stderr (time command outputs to stderr)
